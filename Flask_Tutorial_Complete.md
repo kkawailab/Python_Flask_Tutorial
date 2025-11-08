@@ -1,3 +1,7 @@
+---
+render_with_liquid: false
+---
+
 # Python Flask 完全チュートリアル
 
 ## 目次
