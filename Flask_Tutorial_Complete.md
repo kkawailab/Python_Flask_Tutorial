@@ -223,6 +223,7 @@ python routes_example.py
 
 #### templates/base.html - ベーステンプレート
 
+{% raw %}
 ```html
 <!DOCTYPE html>
 <html lang="ja">
@@ -240,21 +241,23 @@ python routes_example.py
             <li><a href="{{ url_for('contact') }}">お問い合わせ</a></li>
         </ul>
     </nav>
-    
+
     <main>
         {% block content %}
         {% endblock %}
     </main>
-    
+
     <footer>
         <p>&copy; 2024 Flask チュートリアル</p>
     </footer>
 </body>
 </html>
 ```
+{% endraw %}
 
 #### templates/index.html - 子テンプレート
 
+{% raw %}
 ```html
 {% extends "base.html" %}
 
@@ -287,6 +290,7 @@ python routes_example.py
 <p>デフォルト値: {{ undefined_var|default('値が設定されていません') }}</p>
 {% endblock %}
 ```
+{% endraw %}
 
 ### template_example.py - テンプレートを使用するアプリケーション
 
@@ -487,6 +491,7 @@ if __name__ == '__main__':
 
 #### templates/forms/register.html
 
+{% raw %}
 ```html
 {% extends "base.html" %}
 
@@ -497,7 +502,7 @@ if __name__ == '__main__':
 
 <form method="POST" action="{{ url_for('register') }}" novalidate>
     {{ form.hidden_tag() }}
-    
+
     <div class="form-group">
         {{ form.username.label }}
         {{ form.username(class="form-control") }}
@@ -509,7 +514,7 @@ if __name__ == '__main__':
             </div>
         {% endif %}
     </div>
-    
+
     <div class="form-group">
         {{ form.email.label }}
         {{ form.email(class="form-control") }}
@@ -521,7 +526,7 @@ if __name__ == '__main__':
             </div>
         {% endif %}
     </div>
-    
+
     <div class="form-group">
         {{ form.password.label }}
         {{ form.password(class="form-control") }}
@@ -533,7 +538,7 @@ if __name__ == '__main__':
             </div>
         {% endif %}
     </div>
-    
+
     <div class="form-group">
         {{ form.confirm_password.label }}
         {{ form.confirm_password(class="form-control") }}
@@ -545,7 +550,7 @@ if __name__ == '__main__':
             </div>
         {% endif %}
     </div>
-    
+
     <div class="form-group">
         {{ form.terms() }}
         {{ form.terms.label }}
@@ -557,13 +562,14 @@ if __name__ == '__main__':
             </div>
         {% endif %}
     </div>
-    
+
     <div class="form-group">
         {{ form.submit(class="btn btn-primary") }}
     </div>
 </form>
 {% endblock %}
 ```
+{% endraw %}
 
 ### WTFormsの利点
 
