@@ -1,0 +1,1 @@
+Disable Jekyll so GitHub Pages serves prebuilt static files (contains {{ }} syntax that Liquid would choke on).
