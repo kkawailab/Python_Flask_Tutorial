@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python サンプルコード集</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            margin: 0;
+            padding: 2rem 1rem 4rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .lead {
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .examples {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+        .examples li {
+            background: #fdfdfd;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .examples li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+        .examples a {
+            font-weight: 600;
+            text-decoration: none;
+            color: #1d4ed8;
+        }
+        .examples p {
+            margin: 0.5rem 0 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #16a34a;
+        }
+        .back::before {
+            content: "←";
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Python サンプルコード集</h1>
+        <p class="lead">
+            11 章構成の「Python初級チュートリアル」で紹介しているサンプルコードをダウンロードできます。
+            ファイルを右クリックして保存するか、ブラウザ上でコードを表示してコピーしてください。
+        </p>
+        <ul class="examples">
+            <li>
+                <a href="01_hello_world.py">01_hello_world.py</a>
+                <p>最初の Python プログラム。標準出力とコメントの書き方を確認します。</p>
+            </li>
+            <li>
+                <a href="02_variables_and_types.py">02_variables_and_types.py</a>
+                <p>変数、基本データ型、型変換の基礎まとめ。</p>
+            </li>
+            <li>
+                <a href="03_strings.py">03_strings.py</a>
+                <p>文字列の操作方法、フォーマット、エスケープシーケンス。</p>
+            </li>
+            <li>
+                <a href="04_lists_and_tuples.py">04_lists_and_tuples.py</a>
+                <p>リスト・タプルの定義、メソッド、スライスの使い方。</p>
+            </li>
+            <li>
+                <a href="05_dictionaries_and_sets.py">05_dictionaries_and_sets.py</a>
+                <p>辞書と集合。キー操作や集合演算のサンプル付き。</p>
+            </li>
+            <li>
+                <a href="06_control_flow.py">06_control_flow.py</a>
+                <p>if, for, while 文など制御フロー構文を幅広く紹介。</p>
+            </li>
+            <li>
+                <a href="07_functions.py">07_functions.py</a>
+                <p>関数定義、デフォルト引数、可変長引数、スコープの解説。</p>
+            </li>
+            <li>
+                <a href="08_modules.py">08_modules.py</a>
+                <p>モジュールとパッケージの読み込み、標準ライブラリ活用例。</p>
+            </li>
+            <li>
+                <a href="09_classes_and_oop.py">09_classes_and_oop.py</a>
+                <p>クラス定義、継承、特殊メソッドで学ぶオブジェクト指向。</p>
+            </li>
+            <li>
+                <a href="10_file_handling.py">10_file_handling.py</a>
+                <p>ファイルの読み書き、with 構文、例外処理と合わせた安全な操作。</p>
+            </li>
+            <li>
+                <a href="11_error_handling.py">11_error_handling.py</a>
+                <p>例外処理の基礎から独自例外までカバーするサンプル。</p>
+            </li>
+        </ul>
+        <a class="back" href="../../Python_Beginner_Tutorial_Complete.html">チュートリアル本文に戻る</a>
+    </div>
+</body>
+</html>
