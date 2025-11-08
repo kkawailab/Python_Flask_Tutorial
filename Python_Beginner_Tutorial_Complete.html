@@ -5,209 +5,324 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python初級チュートリアル完全版</title>
     <style>
-        /* ベーススタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #eef2ff;
+            --card: #ffffff;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #f97316;
+            --text: #1f2937;
+            --muted: #64748b;
+        }
+
         body {
             font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-            line-height: 1.8;
-            max-width: 1200px;
+            line-height: 1.85;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1d4ed8 0%, #9333ea 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 45%);
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            color: #333;
-            background-color: #f8f9fa;
         }
-        
-        /* ヘッダー */
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            font-size: 2.5em;
+
+        .hero .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.85);
         }
-        
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 1rem 0;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .btn.primary {
+            background: white;
+            color: #1d4ed8;
+        }
+
+        .btn.primary:hover {
+            color: #111827;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15,23,42,0.15);
+        }
+
+        .btn.ghost {
+            border-color: rgba(255,255,255,0.5);
+            color: white;
+        }
+
+        .btn.ghost:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .content-wrapper {
+            max-width: 1100px;
+            margin: -80px auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+        }
+
+        .content-card {
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(15,23,42,0.12);
+            padding: 2.5rem;
+        }
+
+        .content-card h1 {
+            font-size: 2.4rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid rgba(37,99,235,0.15);
+            color: #0f172a;
+        }
+
+        .content-card h1:first-of-type {
+            margin-top: 0;
+        }
+
         h2 {
-            color: #34495e;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 2rem;
+            margin: 2.5rem 0 1rem;
+            color: #0f172a;
+            position: relative;
         }
-        
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--primary);
+            margin-top: 0.5rem;
+        }
+
         h3 {
-            color: #2980b9;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 1.5rem;
+            margin: 1.8rem 0 0.8rem;
+            color: #1d4ed8;
         }
-        
+
         h4 {
-            color: #16a085;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 1.2em;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+            color: #334155;
         }
-        
-        /* パラグラフ */
+
         p {
-            margin-bottom: 15px;
+            margin: 1rem 0;
+            color: var(--text);
             text-align: justify;
         }
-        
-        /* リスト */
+
         ul, ol {
-            margin-bottom: 15px;
-            padding-left: 30px;
+            margin: 1rem 0 1rem 1.5rem;
         }
-        
+
         li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
-        
-        /* 目次 */
+
         .toc {
-            background-color: #ecf0f1;
-            border: 2px solid #bdc3c7;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(59,130,246,0.12));
+            border: 1px solid rgba(99,102,241,0.2);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 1rem 0 2.5rem;
         }
-        
-        .toc ul {
-            list-style-type: none;
-            padding-left: 0;
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.25rem;
         }
-        
-        .toc li {
-            margin-bottom: 5px;
-        }
-        
+
         .toc a {
-            color: #2980b9;
-            text-decoration: none;
-            font-weight: 500;
+            color: #0f172a;
+            font-weight: 600;
         }
-        
+
         .toc a:hover {
-            color: #e74c3c;
-            text-decoration: underline;
+            color: var(--primary);
         }
-        
-        /* コードブロック */
+
         pre {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: 12px;
+            padding: 1.25rem;
             overflow-x: auto;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            line-height: 1.6;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 10px 30px rgba(15,23,42,0.4);
+            position: relative;
         }
-        
+
         code {
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
-            font-size: 0.9em;
+            font-size: 0.92rem;
         }
-        
-        /* インラインコード */
+
         p code, li code, td code {
-            background-color: #f4f4f4;
+            background-color: rgba(37,99,235,0.08);
             padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            color: #e74c3c;
-            font-size: 0.85rem;
-            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #0f172a;
+            border: 1px solid rgba(37,99,235,0.2);
         }
-        
-        /* テーブル */
+
         table {
-            border-collapse: collapse;
             width: 100%;
-            margin: 20px 0;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(15,23,42,0.08);
         }
-        
+
         th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            padding: 1rem;
             text-align: left;
         }
-        
+
         th {
-            background-color: #3498db;
+            background: #2563eb;
             color: white;
-            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
         }
-        
+
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f8fafc;
         }
-        
-        /* 引用 */
+
         blockquote {
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #ecf0f1;
-            font-style: italic;
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: #f8fafc;
+            color: var(--muted);
+            border-radius: 0 8px 8px 0;
         }
-        
-        /* リンク */
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            color: #e74c3c;
-            text-decoration: underline;
-        }
-        
-        /* セクション区切り */
+
         hr {
             border: none;
             height: 2px;
-            background: linear-gradient(to right, #3498db, #e74c3c);
-            margin: 40px 0;
+            background: linear-gradient(to right, rgba(37,99,235,0.2), rgba(249,115,22,0.3));
+            margin: 3rem 0;
         }
-        
-        /* 注意書き */
+
+        .note, .warning {
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid;
+        }
+
         .note {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
+            background: rgba(16,185,129,0.08);
+            border-color: #10b981;
         }
-        
+
         .warning {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
+            background: rgba(248,113,113,0.12);
+            border-color: #f87171;
         }
-        
-        /* レスポンシブデザイン */
+
+        .toclink {
+            color: inherit;
+            border-bottom: none;
+        }
+
+        .toclink:hover {
+            color: var(--primary);
+        }
+
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                font-size: 14px;
+            .hero h1 {
+                font-size: 2.25rem;
             }
-            
-            h1 {
-                font-size: 2em;
+
+            .content-card {
+                padding: 1.5rem;
             }
-            
-            h2 {
-                font-size: 1.5em;
+
+            .content-card h1,
+            .content-card h2 {
+                font-size: 1.5rem;
             }
-            
+
             pre {
-                padding: 10px;
-                font-size: 0.8em;
+                font-size: 0.85rem;
+                padding: 1rem;
             }
         }
         
@@ -310,8 +425,22 @@
     </style>
 </head>
 <body>
-    <h1 id="python"><a class="toclink" href="#python">Python初級チュートリアル完全版</a></h1>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Python Beginner Series</p>
+            <h1>Python初級チュートリアル完全版</h1>
+            <p class="hero-subtitle">基本構文からファイル操作まで11章で体系的に学べる保存版ガイド。読み物と実行可能なサンプルを行き来しながら、Pythonの土台をしっかり固めましょう。</p>
+            <div class="hero-actions">
+                <a href="#_1" class="btn primary">目次へジャンプ</a>
+                <a href="python_beginner_tutorial/examples/" class="btn ghost" target="_blank" rel="noopener">サンプルコード</a>
+            </div>
+        </div>
+    </header>
+<main class="content-wrapper">
+        <div class="content-card">
+            <h1 id="python"><a class="toclink" href="#python">Python初級チュートリアル完全版</a></h1>
 <h2 id="_1"><a class="toclink" href="#_1">目次</a></h2>
+<div class="toc">
 <ol>
 <li><a href="#はじめに">はじめに</a></li>
 <li><a href="#hello-world">Hello World - 最初のプログラム</a></li>
@@ -326,6 +455,7 @@
 <li><a href="#ファイル操作">ファイル操作</a></li>
 <li><a href="#エラー処理">エラー処理</a></li>
 </ol>
+</div>
 <h2 id="_2"><a class="toclink" href="#_2">はじめに</a></h2>
 <p>このチュートリアルは、Pythonプログラミングの基礎を学ぶための包括的なガイドです。プログラミング初心者でも理解できるよう、基本概念から実践的な例まで段階的に説明します。</p>
 <h3 id="_3"><a class="toclink" href="#_3">必要な環境</a></h3>
@@ -2906,6 +3036,8 @@
 <li>オンラインコミュニティやフォーラムでの質問と学習</li>
 </ul>
 <p>プログラミングは実践が重要です。このチュートリアルで学んだ内容を基に、自分のプロジェクトを作成してみてください。Happy Coding! 🐍</p>
+        </div>
+    </main>
     <a href="#" class="back-to-top" title="ページトップに戻る">↑</a>
     
     <script>
